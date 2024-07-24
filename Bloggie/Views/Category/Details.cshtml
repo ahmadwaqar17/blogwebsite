@@ -1,0 +1,55 @@
+﻿@model Category
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Posts</title>
+    <style>
+        body {
+            background-color: #000; /* Optional: Set background color to make white text visible */
+            color: white; /* Default text color to white */
+        }
+
+        .text-white {
+            color: white !important;
+        }
+
+        .card {
+            background-color: #333; /* Optional: Set card background to a darker color */
+        }
+
+        .card-body {
+            color: white; /* Ensure text inside card body is white */
+        }
+
+        .card-img-top {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="text-white">Blogs in @Model.Name Category</h1>
+
+    <div class="row">
+        @foreach (var blog in Model.BlogPosts)
+        {
+            <div class="col-md-4 mb-4">
+                <a href="@Url.Action("Details", "Blog", new { id = blog.Id })" class="text-decoration-none">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="text-white">@blog.Title</h5>
+                            <p>@blog.Content.Substring(0, Math.Min(200, blog.Content.Length)) ...</p>
+                            <img src="~/imgs/pexels-pixabay-38519.jpg" class="card-img-top" alt="Blog Image">
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+
+</body>
+</html>

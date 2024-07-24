@@ -1,0 +1,40 @@
+﻿@model Bloggie.Models.BlogPost
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@Model.Title</title>
+    <style>
+        body {
+            background-color: #000; /* Optional: Set background color to make white text visible */
+            color: white; /* Default text color to white */
+        }
+
+        .text-white {
+            color: white !important;
+        }
+
+        .blog-content {
+            margin: 20px;
+        }
+
+        .blog-img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="text-white">@Model.Title</h1>
+    <img src="~/imgs/@Model.ImagePath" class="blog-img" alt="Blog Image">
+    <div class="blog-content">
+        <p>@Model.Content</p>
+    </div>
+
+    <a href="@Url.Action("Index", "Category")" class="text-white">Back to Blog List</a>
+
+</body>
+</html>

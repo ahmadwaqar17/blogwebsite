@@ -1,0 +1,106 @@
+﻿@{
+    var aiBlogs = ViewData["AIBlogs"] as List<BlogPost>;
+    var ecommerceBlogs = ViewData["EcommerceBlogs"] as List<BlogPost>;
+    var blockchainBlogs = ViewData["BlockchainBlogs"] as List<BlogPost>;
+    var webDevelopmentBlogs = ViewData["WebDevelopmentBlogs"] as List<BlogPost>;
+
+    // Define the base path to the images folder in wwwroot
+    var imagePathBase = "~/imgs/pexels-pixabay-38519.jpg"; // Adjust the path as per your project structure
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blog Home</title>
+    <style>
+        .category-title {
+            font-size: 2em;
+            padding: 10px;
+            background-color: #000; /* Black background */
+            color: #fff; /* White text */
+            border-radius: 5px;
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .category-title.blinking {
+            animation: blinkingText 1.5s infinite;
+        }
+
+        
+
+        .category-container {
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #f2f2f2;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to our Blog</h1>
+
+    <div class="row category-container">
+        <div class="col-md-6">
+            <h2 class="category-title blinking">AI Blogs</h2>
+            @foreach (var blog in aiBlogs)
+            {
+                <div class="card mb-3">
+                    <img src="~/imgs/pexels-pixabay-38519.jpg" class="card-img-top" alt="Blog Image">
+                    <div class="card-body">
+                        <h5 class="card-title">@blog.Title</h5>
+                        <p class="card-text">@blog.Content.Substring(0, 200) ...</p>
+                        <a href="@Url.Action("Details", "Landingpage", new { id = blog.Id })" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-md-6">
+            <h2 class="category-title">Ecommerce Blogs</h2>
+            @foreach (var blog in ecommerceBlogs)
+            {
+                <div class="card mb-3">
+                    <img src="~/imgs/pexels-pixabay-38519.jpg" class="card-img-top" alt="Blog Image">
+                    <div class="card-body">
+                        <h5 class="card-title">@blog.Title</h5>
+                        <p class="card-text">@blog.Content.Substring(0, 200) ...</p>
+                        <a href="@Url.Action("Details", "Landingpage", new { id = blog.Id })" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="row category-container">
+        <div class="col-md-6">
+            <h2 class="category-title">Blockchain Blogs</h2>
+            @foreach (var blog in blockchainBlogs)
+            {
+                <div class="card mb-3">
+                    <img src="~/imgs/pexels-pixabay-38519.jpg" class="card-img-top" alt="Blog Image">
+                    <div class="card-body">
+                        <h5 class="card-title">@blog.Title</h5>
+                        <p class="card-text">@blog.Content.Substring(0, 200) ...</p>
+                        <a href="@Url.Action("Details", "Landingpage", new { id = blog.Id })" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-md-6">
+            <h2 class="category-title">Web Development Blogs</h2>
+            @foreach (var blog in webDevelopmentBlogs)
+            {
+                <div class="card mb-3">
+                    <img src="~/imgs/pexels-pixabay-38519.jpg" class="card-img-top" alt="Blog Image">
+                    <div class="card-body">
+                        <h5 class="card-title">@blog.Title</h5>
+                        <p class="card-text">@blog.Content.Substring(0, 200) ...</p>
+                        <a href="@Url.Action("Details", "Landingpage", new { id = blog.Id })" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>

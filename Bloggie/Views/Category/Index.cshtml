@@ -1,0 +1,25 @@
+﻿@{
+    var categories = ViewBag.Categories as List<Category>;
+    var blogs = ViewBag.Blogs as List<BlogPost>;
+}
+
+<h1>Categories and Their Blogs</h1>
+
+<div class="row">
+    @for (var i = 0; i < categories.Count; i++)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="~/imgs/pexels-pixabay-38519.jpg" class="card-img-top" alt="Category Image"> <!-- Image path for each card -->
+                <div class="card-body">
+                    <h5 class="card-title">@categories[i].Name</h5>
+                    <p class="card-text">@blogs[i]?.Title</p> <!-- Display the blog post title if exists -->
+
+                    <p class="card-text">@blogs[i]?.Content.Substring(0, Math.Min(200, blogs[i].Content.Length)) ...</p> <!-- Display the beginning of blog content -->
+
+                    <a href="@Url.Action("Details", new { id = categories[i].Id })" class="btn btn-primary">View More</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
